@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl1apmb65nivo"]
+
+[ext_resource type="Script" path="res://Systems/meetSpawning.gd" id="1_vkabo"]
+[ext_resource type="PackedScene" uid="uid://dhrwb7baqsvuh" path="res://misc/meet.tscn" id="2_61odb"]
+[ext_resource type="PackedScene" uid="uid://bvh1210c2kyb5" path="res://enemies/sheeep.tscn" id="3_gb8re"]
+
+[sub_resource type="Curve2D" id="Curve2D_yqk2f"]
+
+[node name="meetSpawning" type="Node2D"]
+script = ExtResource("1_vkabo")
+meets = Array[PackedScene]([ExtResource("2_61odb"), ExtResource("3_gb8re")])
+meet_per_minute = null
+cooldown = null
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yqk2f")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+
+[node name="_Timer_118159" type="Timer" parent="Path2D/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
